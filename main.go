@@ -12,7 +12,7 @@ func main() {
 
 	start := time.Now()
 
-	f, err := os.Create("data.txt")
+	f, err := os.Create("data.txt", os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,10 +32,10 @@ func main() {
 		if err2 != nil {
 			log.Fatal(err2)
 		}
-
 	}
 
 	elapsed = time.Since(start)
 	fmt.Printf("File operation took %s\n", elapsed)
 
+	os.Exit(0)
 }
